@@ -31,11 +31,13 @@ export const register = (e) => {
     }
     const user = {
       username: e.target.username.value,
+      name: e.target.name.value,
       password: e.target.password.value,
     }
     try {
       await userService.createNew(user)
-      return dispatch(createNotification({ message: 'You can now log in' }))
+      dispatch(getAllUsers())
+      dispatch(createNotification({ message: 'You can now log in' }))
     } catch (e) {
       dispatch(handleError(e))
     }

@@ -15,6 +15,12 @@ class Login extends React.Component {
           </div>
           <div>
             <input
+              placeholder='name'
+              name='name'
+            />
+          </div>
+          <div>
+            <input
               placeholder='password'
               type='password'
               name='password'
