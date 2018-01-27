@@ -14,7 +14,7 @@ export const submitBlog = (e) => {
     try {
       await blogService.postNewBlog(blog, getState().session.token)
       dispatch(getAllBlogs())
-      dispatch(getAllUsers)
+      dispatch(getAllUsers())
       dispatch(createNotification({ message: `Created new blog ${blog.title} by ${blog.author}` }))
     } catch (e) {
       dispatch(handleError(e))
