@@ -1,1 +1,3 @@
-Frontend for [bloglist](/part4/blog-list)
+## Blogster
+
+This app is a[live](http://bloglist-app.herokuapp.com/) and a part of the real internet
