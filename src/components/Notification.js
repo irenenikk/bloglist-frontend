@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 class Notification extends React.Component {
 
   render() {
-    if (!this.props.notification) {
+    if (!this.props.notification.message) {
       return null
     }
     return (
