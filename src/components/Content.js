@@ -27,7 +27,7 @@ class Content extends React.Component {
     return (
       <div>
         <UserInfo />
-        { this.props.notification.message && <Notification /> }
+         <Notification />
         <Togglable buttonLabel="New Blog">
           <BlogForm />
         </Togglable>

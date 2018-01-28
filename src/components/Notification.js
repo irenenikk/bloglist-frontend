@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 class Notification extends React.Component {
 
   render() {
+    if (!this.props.notification) {
+      return null
+    }
     return (
       <div className={`notification ${this.props.notification.error ? 'error' : 'success'}`} >{this.props.notification.message}</div>
     )
