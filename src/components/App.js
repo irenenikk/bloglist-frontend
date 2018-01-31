@@ -13,7 +13,6 @@ class App extends React.Component {
     if (this.props.user.username === undefined) {
       return (
         <div>
-          <div className="home-prompt">Please</div>
           { this.props.notification.message && <Notification /> }
           <div className="login-form">
             <LoginForm />
