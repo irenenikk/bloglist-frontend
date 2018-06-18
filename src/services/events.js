@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getConfig } from './blogs'
 
 const url = `${process.env.REACT_APP_BASEURL}/events`
 
@@ -26,9 +27,12 @@ const getAll = async () => {
   return response.data
 }
 
-const postNewEvent = async (newEvent) => {
-  const response = await axios.post(url, newEvent)
-  console.log(response)
+const postNewEvent = async (newEvent, token) => {
+  let config;
+  if (token) {
+    config = getConfig(token)
+  }
+  const response = await axios.post(url, newEvent, config)
   return response.data
 }
 

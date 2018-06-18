@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const url = `${process.env.REACT_APP_BASEURL}/blogs`
 
-const getConfig = (authorization) => {
+export const getConfig = (authorization) => {
   const token = `bearer ${authorization}`
   return {
     headers: { 'Authorization': token }

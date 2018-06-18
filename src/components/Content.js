@@ -26,21 +26,27 @@ class Content extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='front-page' >
         <UserInfo />
          <Notification />
-        <Togglable buttonLabel="New Blog">
+        <Togglable buttonLabel='New Blog'>
           <BlogForm />
         </Togglable>
-        <Events events={this.props.events}/>
-        <RouteMenu>
-          <Users name='Users' path='/users' users={this.props.users}/>
-          <Blogs name='Blogs' path='/blogs' blogs={this.props.blogs}/>
-        </RouteMenu>
-        <ShowRoutes>
-          <FancyUser path='/users/:id' findElement={(id) => this.userById(id)}/>
-          <FancyBlog path='/blogs/:id' findElement={(id) => this.blogById(id)} currentUser={this.props.currentUser}/>
-        </ShowRoutes>
+        <div className='page-content' >
+          <div className='routes'>
+            <RouteMenu>
+              <Users name='Users' path='/users' users={this.props.users}/>
+              <Blogs name='Blogs' path='/blogs' blogs={this.props.blogs}/>
+            </RouteMenu>
+            <ShowRoutes>
+              <FancyUser path='/users/:id' findElement={(id) => this.userById(id)}/>
+              <FancyBlog path='/blogs/:id' findElement={(id) => this.blogById(id)} currentUser={this.props.currentUser}/>
+            </ShowRoutes>
+          </div>
+          <div className='feed'>
+            <Events events={this.props.events}/>
+          </div>
+        </div>
       </div>
     )
   }

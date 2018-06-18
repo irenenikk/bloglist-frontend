@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const url = `${process.env.REACT_APP_BASEURL}/users`
-const eventUrl = `${process.env.REACT_APP_BASEURL}/events`
 
 const getAll = async () => {
   const response = await axios.get(url)

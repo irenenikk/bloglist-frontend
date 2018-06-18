@@ -1,5 +1,5 @@
 import eventService from '../../services/events'
-import { handleError, createNotification } from '../actions/notificationActions'
+import { handleError } from '../actions/notificationActions'
 
 export const SET_ALL_EVENTS = 'SET_ALL_EVENTS'
 
@@ -22,9 +22,10 @@ export const getAllEvents = () => {
 }
 
 export const createNewEvent = (event) => {
-    return async (dispatch) => {
-      try {
-      await eventService.postNewEvent(event)
+    return async (dispatch, getState) => {
+    try {
+      const token = getState().session.token
+      await eventService.postNewEvent(event, token)
       dispatch(getAllEvents())
     } catch (e) {
       dispatch(handleError(e))
