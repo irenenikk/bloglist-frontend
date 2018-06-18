@@ -5,6 +5,7 @@ import ShowRoutes from './Routes/ShowRoutes'
 import { withRouter } from 'react-router-dom'
 
 import Blogs from './Blogs/Blogs'
+import Events from './Feed/Events'
 import BlogForm from './Forms/BlogForm'
 import UserInfo from './UserInfo'
 import Togglable from './Togglable'
@@ -31,6 +32,7 @@ class Content extends React.Component {
         <Togglable buttonLabel="New Blog">
           <BlogForm />
         </Togglable>
+        <Events events={this.props.events}/>
         <RouteMenu>
           <Users name='Users' path='/users' users={this.props.users}/>
           <Blogs name='Blogs' path='/blogs' blogs={this.props.blogs}/>
@@ -49,6 +51,7 @@ const mapStateToProps = (state) => {
     notification: state.notification,
     users: state.users,
     blogs: state.blogs,
+    events: state.events,
     currentUser: state.session
   }
 }

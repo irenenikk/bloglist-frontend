@@ -9,16 +9,19 @@ import notificationReducer from './state/reducers/notificationReducer'
 import blogsReducer from './state/reducers/blogsReducer'
 import sessionReducer from './state/reducers/sessionReducer'
 import usersReducer from './state/reducers/usersReducer'
+import eventReducer from './state/reducers/eventReducer'
 import App from './components/App'
 import { loadSession } from './state/actions/sessionActions'
 import { getAllBlogs } from './state/actions/blogActions'
 import { getAllUsers } from './state/actions/userActions'
+import { getAllEvents } from './state/actions/eventActions'
 
 const reducer = combineReducers({
   notification: notificationReducer,
   blogs: blogsReducer,
   session: sessionReducer,
   users: usersReducer,
+  events: eventReducer
 })
 const store = createStore(
   reducer,
@@ -29,6 +32,7 @@ const store = createStore(
 store.dispatch(loadSession())
 store.dispatch(getAllBlogs())
 store.dispatch(getAllUsers())
+store.dispatch(getAllEvents())
 
 ReactDOM.render(
   <Provider store={store}>

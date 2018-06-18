@@ -25,7 +25,7 @@ export const createNotification = (notification) => {
 
 export const handleError = (e) => {
   return async (dispatch) => {
-    if (e.response) {
+    if (e.response && e.response.headers && !e.response.headers['content-type'].includes('html')) {
       return dispatch(createNotification({ message: e.response.data, error: true }))
     }
     if (e instanceof String) {
