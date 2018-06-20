@@ -1,6 +1,4 @@
 import userService from '../../services/users'
-import { createNewEvent } from '../actions/eventActions'
-import { newUserEventObject } from '../../services/events'
 import { handleError, createNotification } from '../actions/notificationActions'
 
 export const SET_ALL_USERS = 'SET_ALL_USERS'
@@ -37,13 +35,7 @@ export const register = (e) => {
       password: e.target.password.value,
     }
     try {
-      const newUser = await userService.createNew(user)
-      dispatch(getAllUsers())
-      const newUserEvent = {
-        ...newUserEventObject,
-        user: newUser
-      }
-      dispatch(createNewEvent(newUserEvent))
+      await userService.createNew(user)
       dispatch(createNotification({ message: 'You can now log in' }))
     } catch (e) {
       dispatch(handleError(e))

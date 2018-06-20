@@ -1,7 +1,5 @@
 import blogService from '../../services/blogs'
 import { handleError, createNotification } from '../actions/notificationActions'
-import { createNewEvent } from '../actions/eventActions'
-import { likedBlogEventObject } from '../../services/events'
 
 export const SET_ALL_BLOGS = 'SET_ALL_BLOGS'
 
@@ -28,12 +26,6 @@ export const handleBlogLike = (blog) => {
     try {
       await blogService.updateBlog(blog, getState().session.token)
       dispatch(getAllBlogs())
-      const likedBlogEvent = {
-        ...likedBlogEventObject,
-        blog: blog,
-        user: getState().session.user
-      }
-      dispatch(createNewEvent(likedBlogEvent))
       dispatch(createNotification({ message: `Updated blog ${blog.title} by ${blog.author}` }))
     } catch (e) {
       dispatch(handleError(e))
